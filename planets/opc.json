@@ -1,0 +1,24 @@
+{
+	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
+	"name": "ProbeCannon",
+	
+	"Spawn": {
+		"playerSpawnPoints": [
+		]
+	},
+	"Props": {
+		"details": 
+		[
+				{
+					"rename":"ProbeTracker Module",
+					"path": "GiantsDeep_Body/Sector_GD/Sector_GDInterior/Sector_GDCore/Sector_Module_Sunken",
+					"position": {"x":-4.9343,"y": -26.4012,"z": -50.6157},
+					"rotation": {"x": 63.6294,"y": 4.1447,"z": 355.1451},
+					"isRelativeToParent": true,
+					"keepLoaded": true,
+						"parentPath": "Sector_OrbitalProbeCannon",
+						"removeChildren": ["Proxy_ModuleSunken"]
+				}
+		]
+	}
+}

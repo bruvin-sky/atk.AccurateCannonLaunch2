@@ -1,0 +1,5 @@
+﻿<Project>
+  <PropertyGroup>
+    <OutputPath>$(AppData)\OuterWildsModManager\OWML\Mods\atk.AccurateCannonLaunch2</OutputPath>
+  </PropertyGroup>
+</Project>

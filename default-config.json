@@ -1,4 +1,22 @@
 {
 	"$schema": "https://raw.githubusercontent.com/ow-mods/owml/master/schemas/config_schema.json",
-	"enabled": true
+	"enabled": true,
+  "settings": 
+  {
+
+    "LaunchTowerPTMPool": 
+    {
+      "title": "Launch Tower Projection Pool",
+      "type": "toggle",
+      "value": false,
+      "tooltip": "PTM_POOL_TOOLTIP"
+    },
+    "GabbroIsleSpawn": 
+    {
+      "title": "Spawn on Giant's Deep",
+      "type": "toggle",
+      "value": false,
+      "tooltip": "GD_SPAWN_TOOLTIP"
+    }
+  }
 }

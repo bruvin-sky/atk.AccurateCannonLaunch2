@@ -7,7 +7,9 @@
 		
 	},
 	"UIDictionary": {
+		"PTM_POOL_TOOLTIP": "Spawns a projection pool and stone connected to the Probe Tracking Module at the Hearthian launch tower, for convenient viewing of the module's descent",
 		
+		"GD_SPAWN_TOOLTIP": "Spawns player on Gabbro's Island at start of loop, for a front row seat to the module's descent"
 	},
 	"OtherDictionary": {
 		

@@ -1,0 +1,30 @@
+{
+	"$schema": "https://raw.githubusercontent.com/Outer-Wilds-New-Horizons/new-horizons/main/NewHorizons/Schemas/body_schema.json",
+	"name": "TimberHearth",
+	
+	
+	"Props": {
+		"details": 
+		[
+			{
+					"rename":"startcamp_RemoteViewer",
+					"path": "OrbitalProbeCannon_Body/Sector_OrbitalProbeCannon/Sector_Module_Broken/Interactables_Module_Broken/Prefab_NOM_RemoteViewer",
+					"position": {"x": 19.7797,"y": -47.4141,"z": 184.5318},
+					"rotation": {"x": 13.0626,"y": 272.8748,"z": 256.1095},
+					"isRelativeToParent": true,
+					"activationCondition": "FAITH_PTM_POOL_DEBUG",
+					"blinkWhenActiveChanged": false
+			},
+			{
+					"rename":"startcamp_SharedStone",
+					"path": "OrbitalProbeCannon_Body/Sector_OrbitalProbeCannon/Sector_Module_Broken/Interactables_Module_Broken/Prefab_NOM_SharedStone_SunkenModule/",
+					"position": {"x": -0.7672,"y": -0.6559,"z": 1.835},
+					"rotation": {"x": 0,"y":  0.9559,"z": 0},
+					"parentPath": "Sector_TH/startcamp_RemoteViewer",
+					"isRelativeToParent": true,
+					"activationCondition": "FAITH_PTM_POOL_DEBUG",
+					"blinkWhenActiveChanged": false
+			}
+		]
+	}
+}
