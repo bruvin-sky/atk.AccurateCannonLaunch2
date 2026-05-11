@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © 2026 atk")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c36d0ff802b292c2895a0f7febd522f9b30eb9f7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44ac0576119b859bcb23519ec32864cba1893be6")]
 [assembly: System.Reflection.AssemblyProductAttribute("AccurateCannonLaunch2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AccurateCannonLaunch2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -26,11 +26,13 @@ namespace AccurateCannonLaunch
         private UnityEngine.GameObject _oceanSplashEffect;
 
         private bool _wokenUp;
+        private bool _cloudCheck;
         private bool _lightningFlashed;
         private bool _cloudSplashed;
         private bool _oceanSplashed;
         private bool _glowed;
         private bool _moduleSwapped;
+
         //private bool _debrisSwapped;
 
         private float _gdDistance;
@@ -61,7 +63,7 @@ namespace AccurateCannonLaunch
                 ModHelper.Console.WriteLine("Loaded into solar system!", MessageType.Success);
 
                 _giantsDeep = GameObject.Find("GiantsDeep_Body");
-                _probeCannon = GameObject.Find("OrbitalProbeCannon_Body");
+                _probeCannon = GameObject.Find("OrbitalProbeCannon_Body"); 
 
                 _launchController = _probeCannon.GetComponent<OrbitalProbeLaunchController>();
                 /*_fakeDebris1 = _launchController._fakeDebrisBodies[0].gameObject;
@@ -115,6 +117,7 @@ namespace AccurateCannonLaunch
 
         private void OnStartOfTimeLoop(int loopCount)
         {
+            _cloudCheck = false;
             _wokenUp = false;
             _lightningFlashed = false;
             _oceanSplashed = false;
@@ -122,8 +125,7 @@ namespace AccurateCannonLaunch
             _glowed = false;
             _moduleSwapped = false;
             t = 0;
-            // _debrisSwapped = false; 
-
+            // _debrisSwapped = false;  
 
             if (_launchController.enabled)
             {
@@ -173,7 +175,7 @@ namespace AccurateCannonLaunch
         }
 
         private void OnWakeUp()
-        {
+        {  
             _debugPool = Locator._timberHearth.transform.Find("Sector_TH/startcamp_RemoteViewer").GetComponent<NomaiRemoteCameraPlatform>();
             _debugPool._id = NomaiRemoteCameraPlatform.ID.None;
             if (LaunchTowerPTMPool)
@@ -220,6 +222,17 @@ namespace AccurateCannonLaunch
 
                 if (_launchController._hasLaunchedProbe && !_moduleSwapped)
                 {
+                    if (!_cloudCheck)
+                    {
+                        var clouds = _giantsDeep.transform.Find("Sector_GD/Clouds_GD");
+                        if (!clouds.gameObject.activeSelf)
+                        {
+                            clouds.gameObject.SetActive(true);
+                            clouds.Find("CloudsTopLayer_GD").gameObject.SetActive(false);
+                            clouds.Find("CloudsBottomLayer_GD").gameObject.SetActive(false);
+                        }
+                        _cloudCheck = true;
+                    } 
                     var baseCloudLight = _giantsDeep.transform.Find("Sector_GD/Clouds_GD/LightningGenerator_GD").gameObject.GetComponent<CloudLightningGenerator>();
                     var baseRedLight = baseCloudLight._lightColor;
 
@@ -270,13 +283,15 @@ namespace AccurateCannonLaunch
                     _gdDistance = Vector3.Distance(_giantsDeep.transform.position, _newProbeTrackingModule.transform.position);
                     if (_gdDistance < 965f && !_cloudSplashed)
                     {
-                        //_eyesRenderer.SetEmissionColor(Color.Lerp(Color.black, new Color(0.5294f, 0.5763f, 1.5f, 1), Mathf.MoveTowards(1, 0f, Time.deltaTime)));
-                        var cloudSplash = GameObject.Instantiate(_cloudSplashEffect, _newProbeTrackingModule.transform);
-                        cloudSplash.transform.position = _newProbeTrackingModule.transform.position;
-                        cloudSplash.AddComponent<AlignWithTargetBody>()._targetBody = _giantsDeep.GetComponent<OWRigidbody>();
-                        //cloudSplash.transform.rotation = _newProbeTrackingModule.transform.rotation;
-                        cloudSplash.transform.localScale = new Vector3(10, 10, 10);
-
+                        if (_giantsDeep.transform.Find("Sector_GD/Clouds_GD/CloudsTopLayer_GD").gameObject.activeSelf)
+                        {
+                            //_eyesRenderer.SetEmissionColor(Color.Lerp(Color.black, new Color(0.5294f, 0.5763f, 1.5f, 1), Mathf.MoveTowards(1, 0f, Time.deltaTime)));
+                            var cloudSplash = GameObject.Instantiate(_cloudSplashEffect, _newProbeTrackingModule.transform);
+                            cloudSplash.transform.position = _newProbeTrackingModule.transform.position;
+                            cloudSplash.AddComponent<AlignWithTargetBody>()._targetBody = _giantsDeep.GetComponent<OWRigidbody>();
+                            //cloudSplash.transform.rotation = _newProbeTrackingModule.transform.rotation;
+                            cloudSplash.transform.localScale = new Vector3(10, 10, 10);
+                        }
                         foreach (var lightning in baseCloudLight.gameObject.transform.GetComponentsInChildren<CloudLightning>())
                         {
                             lightning.lightColor = new Color(0.9133f, 0.3814f, 0.6137f, 1);
